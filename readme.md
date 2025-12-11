@@ -92,7 +92,7 @@ or
 
 2.Generate the lexer and parser
 
-    antlr4 -Dlanguage=Python3 ParserThree.g4 -o gen
+    java -jar antlr-4.13.1-complete.jar -Dlanguage=Python3 ParserThree.g4 -o gen
 or
 
     run build_antlr.bat
