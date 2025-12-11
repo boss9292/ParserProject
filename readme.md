@@ -76,6 +76,7 @@ Download the src code
     
     rmdir /s /q gen
 or
+
     run rm_antlr.bat
 
 
@@ -83,6 +84,7 @@ or
 
     antlr4 -Dlanguage=Python3 ParserThree.g4 -o gen
 or
+
     run build_antlr.bat
 
 
