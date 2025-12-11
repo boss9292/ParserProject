@@ -8,10 +8,10 @@ The goal was to design a simplified, Python-like grammar using ANTLR4, generate 
 and then test it against the sample programs. This is not meant to be a complete parser for python, but rather a sample to learn
 about the features of language implementation.I also added a small GUI tool to make testing easier.
 
-Requirements:
+Requirements for Windows:
 -
 
-1.Install Python 3
+1.Install Python and Java
 -
 
 I used Python 3.11+, but any recent Python 3 version should work.
@@ -22,6 +22,16 @@ Download Python here:
 Check installation:
 
     python --version
+
+Java version 11+ should be able to use Antlr4
+
+Download Java here:
+    https://adoptium.net/
+
+Check installation:
+    
+    java --version
+
 
 2.Install ANTLR4 Runtime for Python
 -
