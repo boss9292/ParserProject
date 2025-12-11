@@ -75,11 +75,15 @@ Download the src code
 1.Remove any old gen directory if applies.
     
     rmdir /s /q gen
+or
+    run rm_antlr.bat
 
 
 2.Generate the lexer and parser
 
     antlr4 -Dlanguage=Python3 ParserThree.g4 -o gen
+or
+    run build_antlr.bat
 
 
 3.Run the run.py:
