@@ -1,8 +1,7 @@
 Python Parser Project
-
+-
 Class: CS 4450
-
-By:Ming Lin
+Author: Ming Lin
 
 In this project I implemented a parser for Python language.
 The goal was to design a simplified, Python-like grammar using ANTLR4, generate a lexer and parser, 
@@ -10,27 +9,30 @@ and then test it against the sample programs. This is not meant to be a complete
 about the features of language implementation.I also added a small GUI tool to make testing easier.
 
 Requirements:
+-
 
-⚙️ Requirements
-1. Install Python 3
+1.Install Python 3
+-
 
 I used Python 3.11+, but any recent Python 3 version should work.
 
 Download Python here:
-👉 https://www.python.org/downloads/
+    https://www.python.org/downloads/
 
 Check installation:
 
-python --version
+    python --version
 
-2. Install ANTLR4 Runtime for Python
+2.Install ANTLR4 Runtime for Python
+-
 
-Run this:
+Run this
 
-pip install antlr4-python3-runtime
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    pip install antlr4-python3-runtime
 
-1. What the Project Does
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Overview
+-
 
 ParserThree.g4 defines a small subset of Python that supports:
 
@@ -58,31 +60,37 @@ the ... placeholder
 
 The grammar is new line sensitive but not scope indentation-sensitive like real Python. Meaning that it'll parse even if not perfectly indentented within a scope(if statement for example) Blocks are recognized based on NEWLINE groups instead of INDENT/DEDENT. This is enough to imitate the python parser for simple programs.
 
-2. File Structure
+File Structure
+-
 ParserThree.g4          → grammar file (lexer + parser rules)
 gen/                    → generated lexer/parser from ANTLR
 run.py                  → GUI to run parser
 project_deliverable_3.py  → Test codes
 
-3. How to Build the Parser
+How to Build the Parser
+-
 
-Have all the files in a single directory and move to that directory 
+Download the src code
 
-Remove any old gen directory if applies.
-  rmdir /s /q gen
-
-
-Generate the lexer and parser:
-  antlr4 -Dlanguage=Python3 ParserThree.g4 -o gen
+1.Remove any old gen directory if applies.
+    
+    rmdir /s /q gen
 
 
-Run the run.py:
+2.Generate the lexer and parser
 
-  -python run.py
+    antlr4 -Dlanguage=Python3 ParserThree.g4 -o gen
+
+
+3.Run the run.py:
+    
+    python run.py
 Or
-  -python run.py [sample code]
 
-4. How the GUI Works 
+    python run.py [sample code]
+
+How the GUI Works 
+-
 
 The GUI lets you type or paste code into a box and click Parse.
 
@@ -94,32 +102,29 @@ It also catches lexer errors .
 
 This ended up being very helpful when debugging grammar rules.
 
-5. Grammar Notes
 
-A few choices I made while writing the grammar:
-
-I kept assignments simple: only a single NAME on the left side.
-
-Blocks are detected by NEWLINE sequences instead of indentation.
-
-... is treated as an ELLIPSIS token because the sample code uses it.
-
-Triple-quoted strings are skipped and treated as multi-line comments.
-
-Reserved words (if, else, for, etc.) are matched before NAME to avoid conflicts.
-
-These decisions were based on the professor’s project description and the structure of the provided deliverable programs.
+How to Read the Parse Tree
+-
 
 
-6. How to Read the Parse Tree
+The parse tree shows how ANTLR understands your code.
+Every grammar rule becomes a node in the tree.
 
-Each rule in the grammar becomes a node. For example:
+For example, an assignment like:
 
-assignment:
-  arith_op1
-  =
-  expr
+    arith_op1 = expr
 
 
-Nested expressions show parent/child structure so it's easy to see how ANTLR grouped operations. The tree output is meant for debugging and verifying that precedence rules (like multiplication before addition) are working.
+might appear in form of tokens:
+
+    assignment:
+        arith_op1
+        =
+        expr
+
+
+The indentation shows which pieces belong together.
+Nested rules appear under their parent rule, so you can easily tell how the expression was grouped and whether the grammar handled operator precedence correctly (for example, * before +).
+
+The parse tree is mainly a debugging tool—it helps you verify that the grammar is working the way you expect.
 
