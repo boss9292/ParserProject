@@ -11,17 +11,19 @@ about the features of language implementation.I also added a small GUI tool to m
 
 Requirements:
 
+⚙️ Requirements
 1. Install Python 3
 
-I used Python 3.11+, but any modern Python 3 version should work.
+I used Python 3.11+, but any recent Python 3 version should work.
 
-https://www.python.org/downloads/
+Download Python here:
+👉 https://www.python.org/downloads/
 
-Make sure python or python3 works in your terminal:
+Check installation:
 
 python --version
 
-2. Install ANTLR4
+2. Install ANTLR4 Runtime for Python
 
 Run this:
 
@@ -121,14 +123,3 @@ assignment:
 
 Nested expressions show parent/child structure so it's easy to see how ANTLR grouped operations. The tree output is meant for debugging and verifying that precedence rules (like multiplication before addition) are working.
 
-7. Known Limitations
-
-This grammar does not attempt to match real Python perfectly.
-
-No indentation or indentation levels are enforced.
-
-It does not support function definitions, classes, tuples, f-strings, etc.
-
-Comparison chaining (a < b < c) isn’t implemented; only one comparator is allowed.
-
-These were intentionally out of scope for the assignment.
